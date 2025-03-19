@@ -23,34 +23,39 @@ def exibir_opcoes():
 def finalizar_app():
     os.system('cls')  # Limpa a tela do terminal
     print('Encerrando o app')
+    
 
 def opcao_invalida():
-    print('Opção inválida\n')
-    input('Digite uma tecla para voltar ao menu principal')
-    main() #vai limpar todas as opções de erro 
-    
+        print('Opção inválida!\n')
+        input('Digite uma tecla para voltar ao menu principal')
+        main()
+
 def escolher_opcao():
-    opcao_escolhida = int(input('Escolha uma opção: '))
-    print(f'Você escolheu a opção {opcao_escolhida}.')
-    
-    if opcao_escolhida == 1:
-        print('Cadastrar restaurante')
-    elif opcao_escolhida == 2:
-        print('Listar restaurante')
-    elif opcao_escolhida == 3:
-        print('Ativar restaurante')
-    elif opcao_escolhida == 4:
-        finalizar_app
-    else:
+    try: # o programa vai tentar ler um inteiro, se não conseguuir vai ler como uma opção inválida.
+        
+        opcao_escolhida = int(input('Escolha uma opção: '))
+        print(f'Você escolheu a opção {opcao_escolhida}.')
+        
+        if opcao_escolhida == 1:
+            print('Cadastrar restaurante')
+        elif opcao_escolhida == 2:
+            print('Listar restaurante')
+        elif opcao_escolhida == 3:
+            print('Ativar restaurante')
+        elif opcao_escolhida == 4:
+            finalizar_app() #toda função tem que ter o parênteses para funcionar
+        else:
+            opcao_invalida()
+    except:
         opcao_invalida()
 
 def main():
-    os.system('cls')
+    os.system('cls') #limpar a tela
     exibir_nome_do_programa()  
     exibir_opcoes()  
     escolher_opcao()
     
     
     
-if __name__ == '__main__':  # Correção do nome especial '__main__'
+if __name__ == '__main__':  
     main()
